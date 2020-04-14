@@ -23,11 +23,16 @@ def login(request):
                 login_user(request,user)
                 return redirect('main-page')
             else:
-                return redirect('login')
+                context_dict = {'form':login_form,'invalid_credentials':True}
+                return render(request,'user/login.html',context_dict)
+        else:
+            context_dict = {'form': login_form, 'invalid_credentials': True}
+            return render(request, 'user/login.html', context_dict)
 
     else:
         login_form = LoginForm()
-    return render(request,'user/login.html',{'form':login_form})
+        context_dict = {'form': login_form, 'invalid_credentials': False}
+        return render(request,'user/login.html',context_dict)
 
 
 def SignUpBuyer(request):

@@ -29,9 +29,13 @@
                             </h3>
                             <hr class="hr-black">
                         </div>
-                        <div class="wrong1">
-                                <p class="sign">Your passwords do not match</p>
-                        </div>
+                        {% if invalid_credentials %}
+                            <div class="card text-center bg-danger py-3">
+                                <div class="text-light">
+                                    Entered E-mail or Password is incorrect
+                                </div>
+                            </div>
+                        {% endif %}
                         <div class="md-form md-outline mt-5">
                             <i class="fas fa-envelope prefix"></i>
                                 {{ form.identifier }}

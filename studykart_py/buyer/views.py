@@ -22,7 +22,7 @@ def main_page(request):
     seller_role = roles.objects.get(pk=2)
     if request.user.is_authenticated and seller_role in request.user.roles_set.all():
         is_seller=True
-    context_dict = {'products':all_products,'categories':all_categories,'is_seller':is_seller,'signin':signin_form}
+    context_dict = {'products':all_products,'categories':all_categories,'is_seller':is_seller,'form':signin_form}
     return render(request,'buyer/index.html',context_dict)
 
 
@@ -89,15 +89,21 @@ def signin_card_validator(request):
         if login_form.is_valid():
             identifier = login_form.cleaned_data['identifier']
             password = login_form.cleaned_data['password']
-            user=authenticate(request,username=identifier,password=password)
+            user = authenticate(request, username=identifier, password=password)
             if user != None:
-                login_user(request,user)
+                login_user(request, user)
                 return redirect('main-page')
             else:
-                return redirect('login')
+                context_dict = {'form': login_form, 'invalid_credentials': True}
+                return render(request, 'buyer/index.html', context_dict)
+        else:
+            context_dict = {'form': login_form, 'invalid_credentials': True}
+            return render(request, 'buyer/index.html', context_dict)
 
     else:
-        return redirect('main-page')
+        login_form = signin_card()
+        context_dict = {'form': login_form, 'invalid_credentials': False}
+        return render(request, 'buyer/index.html', context_dict)
 
 
 @login_required
