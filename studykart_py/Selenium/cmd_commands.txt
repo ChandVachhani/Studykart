@@ -1,0 +1,12 @@
+python Studykart.py
+
+pytest test_Studykart.py
+
+python -m pytest
+
+py.test
+
+pytest
+
+// Best method
+pytest -v

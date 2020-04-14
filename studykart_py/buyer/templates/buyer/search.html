@@ -1,0 +1,95 @@
+{% extends "buyer/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+   
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    {% block title %} 
+    <title>Search Result</title>
+    {% endblock %}
+</head>
+<body class="grey lighten-3">
+  
+  {% block content %}
+
+  
+  <main class="mt-5 pt-4">
+    <div class="container wow fadeIn">
+  
+      <h2 class="my-5 h2 text-center">({{ total_products }}) Results Found</h2>
+
+      <div class="row wow fadeIn mb-4">
+          {% for product in products %}
+  
+        <div class="col-lg-3 col-md-6 mb-4">
+
+  
+          <div class="card">
+
+            
+            <div class="view overlay">
+              <img style="max-height:300px;" src="{{product.products_image.url }}" class="card-img-top"
+                alt="">
+              <a>
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+  
+
+  
+            <div class="card-body text-center">
+  
+              <a href="" class="grey-text">
+                <h5>{{ product.product_category }}</h5>
+              </a>
+              <h5>
+                <strong>
+                  <a href="{% url 'products' product.pk %}" class="dark-grey-text">{{ product.product_name }}
+                    <span class="badge badge-pill danger-color">NEW</span>
+                  </a>
+                </strong>
+              </h5>
+
+              <h4 class="font-weight-bold blue-text">
+                <strong>₹{{ product.product_price }}</strong>
+              </h4>
+
+            </div>
+  
+
+          </div>
+  
+
+        </div>
+           {% endfor %}
+      </div>
+
+    </div>
+  </main>
+  
+
+  {% endblock %}
+
+  
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <title>StudyKart</title>
+</head>
+<body>
+    <header>
+        {% load static %}
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#" style="font-weight: 100;"><strong>StudyKart</strong></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                    {% if not user.is_authenticated %}
+                        <li class="nav-item mx-1">
+                            <a class="nav-link" href="{% url 'login' %}"><strong>Sign In</strong></a>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link" href="{% url 'signup_buyer' %}"><strong>Sign Up as Buyer</strong></a>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link" href="{% url 'signup_seller' %}"><strong>Sign Up as Seller</strong></a>
+                        </li>
+                    {% endif %}
+                        <li class="nav-item d-flex">
+                          <a class="nav-link waves-effect" href="{% url 'wishlist' %}">
+                            <span class="badge red z-depth-1 mr-1"></span>
+                            <i class="far fa-heart" style="font-size:25px;"></i>
+                            <span class="clearfix d-none d-sm-inline-block"> WishList </span>
+                          </a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item dropdown ml-3">
+                          <a class="nav-link dropdown-toggle" id="profile" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user" style="font-size:23px;"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                            aria-labelledby="profile">
+                            <a class="dropdown-item" href="{% url 'profile' %}" style="font-weight: 400 !important;"><i class="fas fa-user mr-3"></i>Profile</a>
+                            <a class="dropdown-item" href="{% url 'orders' %}" style="font-weight: 400 !important;"><i class="fas fa-shopping-cart mr-3"></i>Your Orders</a>
+                              {% if is_seller %}
+                            <a class="dropdown-item" href="{% url 'add-product' %}" style="font-weight: 400 !important;"><i class="far fa-plus-square mr-3"></i>Add Products</a>
+                            <a class="dropdown-item" href="{% url 'seller-products' %}" style="font-weight: 400 !important;"><i class="fab fa-product-hunt mr-3"></i>Your Products</a>
+                              {% endif %}
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'logout' %}" style="font-weight: 400 !important;"><i class="fas fa-sign-out-alt mr-3"></i>Logout</a>
+                          </div>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row" style="padding-top: 180px;">
+                <div class="col-12 col-lg-6 text-white text-center" style="font-weight: 300;">
+                    <h1 style="font-size: 45px;">Get Big Discounts and good Products</h1>
+                </div>
+                <div class="d-none d-xl-block col-xl-1"></div>
+                    <!-- SIGNIN CARD -->
+                {% if user.is_authenticated %}
+                <div class="d-none d-lg-block col-lg-6 col-xl-5">
+                  <div class="card bg-white px-3">
+                      <div class="card-body">
+                          <img src="..\static\img\demo1.jpg" alt="Studykart Logo" height="300px" width="350px" >
+                      </div>
+                  </div>
+               </div>
+                {% else %}
+                <div class="d-none d-lg-block col-lg-6 col-xl-5">
+                  <div class="card bg-white px-3">
+                      <div class="card-body">
+                          <div class="text-center">
+                              <h3 class="text-black">
+                               <i class="fas fa-user mr-1"></i>
+                                  Sign In
+                              </h3>
+                              <hr class="hr-black">
+                          </div>
+                          <form action="{% url 'signin_card' %}" method="POST" class="form-group text-black">
+                              {% csrf_token %}
+                               <div class="md-form my-5">
+                                   <i class="fas fa-user prefix text-black"></i>
+                                   {{ signin.identifier }}
+                                   <label for="uname" style="font-size: 17px !important; font-weight: 400;" class="text-black">Username / E-mail</label>
+                               </div>
+                               <div class="md-form my-5">
+                                   <i class="fas fa-lock prefix text-black"></i>
+                                   {{ signin.password }}
+                                   <label for="pass" style="font-size: 17px !important; font-weight: 400;" class="text-black">Password</label>
+                               </div>
+                               <div class="row">
+                                   <button class="btn btn-primary mt-3 mb-4 ml-auto mr-auto" style="width:60%;font-size: 0.85rem;"><i class="fas fa-lock mr-3" style="font-size: 1.05rem;"></i>Login Securely</button>
+                               </div>
+                          </form>
+                      </div>
+                  </div>
+               </div>
+                {% endif %}                
+            </div>
+        </div>
+    </header>
+        <!-- PRODUCTS -->
+    <section id="products" class="text-center" style="padding-top: 80px;">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-info lighten-3 mt-3 mb-5">
+                <span class="navbar-brand">Categories:</span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                  aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="basicExampleNav">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'main-page' %}">All
+                      </a>
+                    </li>
+                      {% for catogory in categories %}
+                        <li class="nav-item" href="#">
+                          <a class="nav-link" href="{% url 'main-page' catogory.pk %}">{{ catogory.name }}</a>
+                        </li>
+                       {% endfor %}
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0 ml-5" action="{% url 'search-page' %}" method="GET">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search-result">
+                    <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
+                  </form>
+                </div>
+              </nav>
+              <div class="row wow fadeIn mb-4">
+                {% for product in products %}
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+
+                  
+                  <div class="card" style="min-height: 443px;">
+
+                    
+                    <div class="view overlay">
+                      <img style="max-height:300px;" src="{{product.products_image.url }}" class="card-img-top"
+                        alt="StudyKart">
+                      <a>
+                        <div class="mask rgba-white-slight"></div>
+                      </a>
+                    </div>
+                    
+                    <div class="card-body text-center align-items-end">
+                      
+                      <a href="" class="grey-text">
+                        <h5>{{ product.product_category }}</h5>
+                      </a>
+                      <h5>
+                        <strong>
+                          <a href="{% url 'products' product.pk %}" class="dark-grey-text">{{ product.product_name }}
+                          </a>
+                        </strong>
+                      </h5>
+
+                      <h4 class="font-weight-bold blue-text">
+                        <strong>₹{{ product.product_price }}</strong>
+                      </h4>
+
+                    </div>
+                    
+
+                  </div>
+                  
+
+                </div>
+                
+               {% endfor %}
+              </div>
+
+        </div>
+    </section>
+    <footer id="footer" class="page-footer text-center bg-dark" style="padding-top:35px;">
+      <div class="footer-copyright py-4">
+        Copyright @ StudyKart 2020
+      </div>
+        <div class="text-light mt-3 pb-5">Project Built by 18BCE238 18BCE249 18BCE231</div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+    </body>
+    <style>
+        *{
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+        }
+        header{
+            min-height: 100vh;
+            background-image:  linear-gradient(rgba(0, 0, 0, 0.3),rgba(0,0,0,0.3)), url('{% static 'img/bg1.png'%}');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .top-nav-collapse {
+            background-color: #084177;
+        }
+    </style>
+</html>

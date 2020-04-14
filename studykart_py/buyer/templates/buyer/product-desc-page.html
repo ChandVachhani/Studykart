@@ -1,0 +1,109 @@
+{% extends "buyer/base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <title>StudyKart</title>
+</head>
+
+<body>
+
+  {% block content %}
+
+
+  <main class="mt-5 pt-4" id="products">
+    <div class="container dark-grey-text mt-5">
+
+
+      <div class="row wow fadeIn">
+
+
+        <div class="col-md-6 mb-4 text-center">
+
+          <img src="{{ product.products_image.url }}" class="img-fluid" alt="">
+
+        </div>
+
+
+
+        <div class="col-md-6 mb-4">
+
+
+          <div class="p-4">
+
+            <p class="lead font-weight-bold">{{ product.product_name }}</p>
+            <p class="lead font-weight-bold">
+              <span>₹{{ product.product_price }}</span>
+            </p>
+
+            <p class="font-weight-normal text-muted">{{ product.product_description }}</p>
+
+            <form class="d-flex justify-content-left">
+            {% if not is_user_seller %}
+                {% if not product.is_booked %}
+                  <a class="btn btn-primary btn-md my-0 p" href="{% url 'checkout' product.pk%}">Buy Now
+                    <i class="fas fa-shopping-cart ml-1"></i>
+                  </a>
+                        {% elif product.user_booked_id is user.pk and user.pk is not null %}
+                    <a class="btn btn-primary btn-md my-0 p" href="{% url 'cancel' product.pk%}">Cancel Booking
+                        <i class="far fa-window-close"></i>
+                    </a>
+                    {% else %}
+                   <button class="btn btn-primary btn-md my-0 p" disabled>Already Booked
+                    <i class="fas fa-shopping-cart ml-1"></i>
+                  </button>
+                    {% endif %}
+                {% if in_wishlist %}
+                  <button href="{% url 'add_to_wishlist' product.pk %}" class="btn btn-primary btn-md my-0 p" disabled>Already In wishlist
+                    <i class="far fa-heart ml-1"></i>
+                  </button>
+                {% else %}
+                  <a href="{% url 'add_to_wishlist' product.pk %}" class="btn btn-primary btn-md my-0 p">Add to WishList
+                    <i class="far fa-heart ml-1"></i>
+                  </a>
+                {% endif %}
+            {% endif %}
+            </form>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+      <hr>
+
+
+  </main>
+
+
+  {% endblock %}
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+</body>
+
+</html>

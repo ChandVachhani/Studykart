@@ -1,0 +1,161 @@
+Microsoft Windows [Version 10.0.18363.719]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+D:\clg projects\python\studykart\studykart_py>venv\Scripts\activate.bat
+
+(venv) D:\clg projects\python\studykart\studykart_py>cd Selenium
+
+(venv) D:\clg projects\python\studykart\studykart_py\Selenium>python Studykart.py
+
+DevTools listening on ws://127.0.0.1:52323/devtools/browser/4b919db1-28a4-4b73-af2b-7b799457baee
+[13860:15284:0412/005944.347:ERROR:browser_switcher_service.cc(238)] XXX Init()
+Test Completed!
+
+(venv) D:\clg projects\python\studykart\studykart_py\Selenium>pytest test_Studykart.py
+================================================= test session starts =================================================
+platform win32 -- Python 3.8.1, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
+rootdir: D:\clg projects\python\studykart\studykart_py\Selenium
+collected 3 items
+
+test_Studykart.py
+DevTools listening on ws://127.0.0.1:52784/devtools/browser/b6abab16-c1be-4544-8988-4a8a308d1ac4
+[15320:4352:0412/011322.846:ERROR:browser_switcher_service.cc(238)] XXX Init()
+...                                                                                            [100%]
+
+================================================= 3 passed in 24.47s ==================================================
+
+(venv) D:\clg projects\python\studykart\studykart_py\Selenium>python -m pytest
+================================================= test session starts =================================================
+platform win32 -- Python 3.8.1, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
+rootdir: D:\clg projects\python\studykart\studykart_py\Selenium
+collected 3 items
+
+test_Studykart.py
+DevTools listening on ws://127.0.0.1:52885/devtools/browser/1dfc125b-6013-48b2-ad8f-8e3e30f659c8
+[13092:14044:0412/011523.206:ERROR:browser_switcher_service.cc(238)] XXX Init()
+...                                                                                            [100%]
+
+================================================= 3 passed in 17.54s ==================================================
+
+(venv) D:\clg projects\python\studykart\studykart_py\Selenium>py.test
+================================================= test session starts =================================================
+platform win32 -- Python 3.8.1, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
+rootdir: D:\clg projects\python\studykart\studykart_py\Selenium
+collected 3 items
+
+test_Studykart.py
+DevTools listening on ws://127.0.0.1:52955/devtools/browser/8dd67dee-ecfa-4254-9937-81737828bdcd
+[10828:8104:0412/011637.800:ERROR:browser_switcher_service.cc(238)] XXX Init()
+...                                                                                            [100%]
+
+================================================= 3 passed in 15.15s ==================================================
+
+(venv) D:\clg projects\python\studykart\studykart_py\Selenium>pytest
+================================================= test session starts =================================================
+platform win32 -- Python 3.8.1, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
+rootdir: D:\clg projects\python\studykart\studykart_py\Selenium
+collected 3 items
+
+test_Studykart.py
+DevTools listening on ws://127.0.0.1:53023/devtools/browser/90c74056-9fa3-4c3a-8429-1175ad29fcb2
+[6644:12800:0412/011731.758:ERROR:browser_switcher_service.cc(238)] XXX Init()
+...                                                                                            [100%]
+
+================================================= 3 passed in 15.22s ==================================================
+
+(venv) D:\clg projects\python\studykart\studykart_py\Selenium>pytest -v
+================================================= test session starts =================================================
+platform win32 -- Python 3.8.1, pytest-5.4.1, py-1.8.1, pluggy-0.13.1 -- c:\users\chand vachhani\appdata\local\programs\python\python38\python.exe
+cachedir: .pytest_cache
+rootdir: D:\clg projects\python\studykart\studykart_py\Selenium
+collected 3 items
+
+test_Studykart.py::test_setup
+DevTools listening on ws://127.0.0.1:53083/devtools/browser/a0d651fc-9ac8-45af-9d88-eb91c080d393
+[12328:13816:0412/011807.341:ERROR:browser_switcher_service.cc(238)] XXX Init()
+PASSED                                                                             [ 33%]
+test_Studykart.py::test_login PASSED                                                                             [ 66%]
+test_Studykart.py::test_teardown PASSED                                                                          [100%]
+
+================================================= 3 passed in 17.96s ==================================================
+
+(venv) D:\clg projects\python\studykart\studykart_py\Selenium>pytest -v
+================================================= test session starts =================================================
+platform win32 -- Python 3.8.1, pytest-5.4.1, py-1.8.1, pluggy-0.13.1 -- c:\users\chand vachhani\appdata\local\programs\python\python38\python.exe
+cachedir: .pytest_cache
+rootdir: D:\clg projects\python\studykart\studykart_py\Selenium
+collected 3 items
+
+test_Studykart.py::test_setup
+DevTools listening on ws://127.0.0.1:53201/devtools/browser/f9328ed7-a701-4c8f-9558-3af4add3bfec
+[8104:2260:0412/012049.852:ERROR:browser_switcher_service.cc(238)] XXX Init()
+PASSED                                                                             [ 33%]
+test_Studykart.py::test_login FAILED                                                                             [ 66%]
+test_Studykart.py::test_teardown PASSED                                                                          [100%]
+
+====================================================== FAILURES =======================================================
+_____________________________________________________ test_login ______________________________________________________
+
+    def test_login():
+        driver.get("http://127.0.0.1:8000/user/")
+        driver.find_element_by_id("uname").send_keys("chand4")
+        driver.find_element_by_id("login-password").send_keys("chandvachhani")
+        driver.find_element_by_id("btnLogin").click()
+        x = driver.title
+>       assert x == "abc"
+E       AssertionError: assert 'Log In' == 'abc'
+E         - abc
+E         + Log In
+
+test_Studykart.py:15: AssertionError
+=============================================== short test summary info ===============================================
+FAILED test_Studykart.py::test_login - AssertionError: assert 'Log In' == 'abc'
+============================================ 1 failed, 2 passed in 19.94s =============================================
+
+(venv) D:\clg projects\python\studykart\studykart_py\Selenium>pytest -v
+================================================= test session starts =================================================
+platform win32 -- Python 3.8.1, pytest-5.4.1, py-1.8.1, pluggy-0.13.1 -- c:\users\chand vachhani\appdata\local\programs\python\python38\python.exe
+cachedir: .pytest_cache
+rootdir: D:\clg projects\python\studykart\studykart_py\Selenium
+collected 3 items
+
+test_Studykart.py::test_setup
+DevTools listening on ws://127.0.0.1:53264/devtools/browser/493476bd-2cc5-49dc-ad9d-d65908a36640
+[13944:14716:0412/012128.017:ERROR:browser_switcher_service.cc(238)] XXX Init()
+PASSED                                                                             [ 33%]
+test_Studykart.py::test_login PASSED                                                                             [ 66%]
+test_Studykart.py::test_teardown PASSED                                                                          [100%]
+
+================================================= 3 passed in 15.52s ==================================================
+
+(venv) D:\clg projects\python\studykart\studykart_py\Selenium>pytest -v
+================================================= test session starts =================================================
+platform win32 -- Python 3.8.1, pytest-5.4.1, py-1.8.1, pluggy-0.13.1 -- c:\users\chand vachhani\appdata\local\programs\python\python38\python.exe
+cachedir: .pytest_cache
+rootdir: D:\clg projects\python\studykart\studykart_py\Selenium
+collected 1 item
+
+test_Studykart.py::test_login
+DevTools listening on ws://127.0.0.1:53387/devtools/browser/98230384-2545-4010-b9cd-cfe6f1b985be
+[10380:12196:0412/012351.159:ERROR:browser_switcher_service.cc(238)] XXX Init()
+PASSED                                                                             [100%]
+
+================================================= 1 passed in 14.84s ==================================================
+
+(venv) D:\clg projects\python\studykart\studykart_py\Selenium>pytest -v
+================================================= test session starts =================================================
+platform win32 -- Python 3.8.1, pytest-5.4.1, py-1.8.1, pluggy-0.13.1 -- c:\users\chand vachhani\appdata\local\programs\python\python38\python.exe
+cachedir: .pytest_cache
+rootdir: D:\clg projects\python\studykart\studykart_py\Selenium
+collected 3 items
+
+test_Studykart.py::test_setup
+DevTools listening on ws://127.0.0.1:53460/devtools/browser/88c0c45d-693a-4815-ad1b-6746a69d0e31
+[14648:10788:0412/012458.625:ERROR:browser_switcher_service.cc(238)] XXX Init()
+PASSED                                                                             [ 33%]
+test_Studykart.py::test_login PASSED                                                                             [ 66%]
+test_Studykart.py::test_teardown PASSED                                                                          [100%]
+
+================================================= 3 passed in 19.77s ==================================================
+
+(venv) D:\clg projects\python\studykart\studykart_py\Selenium>

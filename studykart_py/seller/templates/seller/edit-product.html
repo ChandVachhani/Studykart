@@ -1,0 +1,80 @@
+{% extends "buyer/base.html" %}
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    {% block title %}
+    <title>Edit Product</title>
+    {% endblock %}
+</head>
+<body>
+
+  {% block content %}
+<center>
+<section class="form-elegant mt-5" style="padding-top:90px;padding-bottom:40px;width: 45%;">
+
+  <div class="card">
+
+    <div class="card-body mx-4">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="text-center">
+              <h3 class="dark-grey-text mb-5"><strong>Edit Product</strong></h3>
+            </div>
+            <div class="md-form">
+              {{ form.product_name }}
+              <label for="pname">Product Name</label>
+            </div>
+            <div class="md-form mb-4 pink-textarea active-pink-textarea">
+                {{ form.product_description }}
+              <label for="pcontent">Product Description</label>
+            </div>
+            <div class="md-form">
+                {{ form.product_price }}
+              <label for="price">Your Price</label>
+            </div>
+            <br>
+            <div class="input-group mb-4">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+              </div>
+              <div class="custom-file">
+                  {{ form.product_image }}
+{#                <input type="file" class="custom-file-input" id="pimg" aria-describedby="pimg">#}
+                <label class="custom-file-label" for="pimg">Choose file</label>
+              </div>
+            </div>
+          <div class="text-center mb-3">
+            <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Save Changes</button>
+          </div>
+      </form>
+    </div>
+  </div>
+
+</section>
+</center>
+
+{% endblock %}
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+</body>
+</html>

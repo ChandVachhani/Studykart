@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+        
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    
+    {% block title %} {% endblock %}
+
+</head>
+<body class="grey lighten-3">
+
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white">
+    <div class="container">
+      <div class="navbar-brand waves-effect">
+          <a href="{% url 'main-page' %}">
+            <strong class="blue-text">StudyKart</strong>
+          </a>
+      </div>
+      <form class="form-inline my-2 my-lg-0 ml-5" action="{% url 'search-page' %}" method="get">
+        <input class="form-control" value="{{ search_result }}" name="search-result" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
+      </form>
+      <div class="collapse navbar-collapse" id="navbar-content">
+        <ul class="navbar-nav nav-flex-icons ml-auto">
+          <li class="nav-item">
+             <a class="nav-link waves-effect" href="{% url 'wishlist' %}">
+               <span class="badge orange z-depth-1 mr-1">{{ total_products }}</span>
+               <i class="far fa-heart" style="font-size: 23px;"></i>
+               <span class="clearfix d-none d-sm-inline-block"> WishList </span>
+             </a>
+           </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item dropdown ml-3">
+                  <a class="nav-link dropdown-toggle" id="profile" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user" style="font-size:23px;"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                    aria-labelledby="profile">
+                    <a class="dropdown-item" href="{% url 'profile' %}" style="font-weight: 400 !important;"><i class="fas fa-user mr-3"></i>Profile</a>
+                    <a class="dropdown-item" href="{% url 'orders' %}" style="font-weight: 400 !important;"><i class="fas fa-shopping-cart mr-3"></i>Your Orders</a>
+                      {% if is_seller %}
+                          <a class="dropdown-item" href="{% url 'add-product' %}" style="font-weight: 400 !important;"><i class="far fa-plus-square mr-3"></i>Add Products</a>
+                          <a class="dropdown-item" href="{% url 'seller-products' %}" style="font-weight: 400 !important;"><i class="fab fa-product-hunt mr-3"></i>Your Products</a>
+                      {% endif %}
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'logout' %}" style="font-weight: 400 !important;"><i class="fas fa-sign-out-alt mr-3"></i>Logout</a>
+                  </div>
+                </li>
+            {% endif %}
+          </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  {% block content %}{% endblock %}
+  
+
+  <footer class="page-footer text-center bg-dark" id="footer" style="padding-top:55px; margin-top: 143px;">
+      <div class="py-4 footer-copyright">
+        Copyright @ StudyKart 2020
+      </div>
+        <div class="text-light pb-5">Project Built by 18BCE238 18BCE249 18BCE231</div>
+  </footer>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+</body>
+
+</html>
