@@ -7,6 +7,7 @@ from django.contrib.auth import login as login_user
 from django.contrib.auth import authenticate,password_validation
 from .models import user_profile
 from user.models import roles
+from django.db import IntegrityError
 import pandas as pd
 # Create your views here.
 
@@ -39,8 +40,15 @@ def SignUpBuyer(request):
             email = signup_form.cleaned_data['student_email']
             password = signup_form.cleaned_data['student_password']
             mobile = signup_form.cleaned_data['student_mobile']
-            student = User.objects.create_user(username=username,email=email,password=password,first_name=first_name,last_name=last_name)
-            student_profile = user_profile.objects.create(user=student, user_mobile=mobile)
+            try:
+                student = User.objects.create_user(username=username, email=email, password=password,
+                                                   first_name=first_name, last_name=last_name)
+            except IntegrityError:
+                return redirect('main-page')
+            try:
+                student_profile = user_profile.objects.create(user=student,user_mobile=mobile)
+            except IntegrityError:
+                return redirect('main-page')
             buyer_role = roles.objects.get(pk=1)
             student.roles_set.add(buyer_role)
             return redirect('login')
@@ -61,8 +69,15 @@ def SignUpSeller(request):
             email = signup_form.cleaned_data['student_email']
             password = signup_form.cleaned_data['student_password']
             mobile = signup_form.cleaned_data['student_mobile']
-            student = User.objects.create_user(username=username,email=email,password=password,first_name=first_name,last_name=last_name)
-            student_profile = user_profile.objects.create(user=student,user_mobile=mobile)
+            try:
+                student = User.objects.create_user(username=username, email=email, password=password,
+                                                   first_name=first_name, last_name=last_name)
+            except IntegrityError:
+                return redirect('main-page')
+            try:
+                student_profile = user_profile.objects.create(user=student,user_mobile=mobile)
+            except IntegrityError:
+                return redirect('main-page')
             seller_role = roles.objects.get(pk=2)
             buyer_role = roles.objects.get(pk=1)
             student.roles_set.add(seller_role)
