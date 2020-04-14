@@ -5,11 +5,11 @@ This Application is built for exchanging book and other materials at University 
 
 ## Python Frameworks and APIs used
 
- <b>Django</b>: It is used for backend scripting with MYSQL.
- <b>Selenium</b>: It is used for automated web testing of our application.
- <b>Request</b>: It is used to request a web page and get data for web scrapping.
- <b>Beautiful Soup</b>: It is used for web scrapping.
- <b>Pandas</b>: It is used for filtering purpose in Django Admin Page.
+ <b>Django</b>: It is used for backend scripting with MYSQL.<br>
+ <b>Selenium</b>: It is used for automated web testing of our application.<br>
+ <b>Request</b>: It is used to request a web page and get data for web scrapping.<br>
+ <b>Beautiful Soup</b>: It is used for web scrapping.<br>
+ <b>Pandas</b>: It is used for filtering purpose in Django Admin Page.<br>
 
 ## Project Developers
 #### 18BCE238
