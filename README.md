@@ -18,21 +18,21 @@ This Application is built for exchanging book and other materials at University 
 
 ## How to run the Project
 ### Install XAMPP
-Then open Xampp control panel and run mysql server.
+Then open Xampp control panel and run mysql server.<br>
 ### Open Command Prompt
 Enter into studykart_py folder
-Then Activate Virtual Environment by enter command **venv\scripts\activate.bat**
-Then run command <b> python manage.py makemigrations </b>
-Then run command <b> python manage.py migrate </b>
-Keep open command prompt and follow next steps.
+Then Activate Virtual Environment by enter command **venv\scripts\activate.bat**<br>
+Then run command <b> python manage.py makemigrations </b> <br>
+Then run command <b> python manage.py migrate </b> <br>
+Keep open command prompt and follow next steps. <br>
 
 #### Open PhpMyAdmin
 
-In browser write <b>http://localhost/phpmyadmin</b> or in xampp control panel click <b> Admin </b> of Mysql.
-Then Create database named studykart.
-Then in studykart database click on <b>import</b> tab and choose file studykart.sql present in repository and click on <b>Go</b>.
-This should not give any errors. 
-Then in command prompt run command <b> python manage.py runserver </b>.
-Then open link shown in command prompt.
+In browser write <b>http://localhost/phpmyadmin</b> or in xampp control panel click <b> Admin </b> of Mysql. <br>
+Then Create database named studykart. <br>
+Then in studykart database click on <b>import</b> tab and choose file studykart.sql present in repository and click on <b>Go</b>. <br>
+This should not give any errors. <br>
+Then in command prompt run command <b> python manage.py runserver </b>. <br>
+Then open link shown in command prompt. <br>
 
-If any error comes then please contact me at 18BCE238@nirmauni.ac.in
+If any error comes then please contact me at 18BCE238@nirmauni.ac.in <br>
