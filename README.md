@@ -16,6 +16,9 @@ This Application is built for exchanging book and other materials at University 
 #### 18BCE249
 #### 18BCE231
 
+### Project Video
+There is project description video name project_video.mp4
+
 ## How to run the Project
 ### Install XAMPP
 Then open Xampp control panel and run mysql server.<br>
@@ -36,3 +39,12 @@ Then in command prompt run command <b> python manage.py runserver </b>. <br>
 Then open link shown in command prompt. <br>
 
 If any error comes then please contact me at 18BCE238@nirmauni.ac.in <br>
+### Credentials
+#### There are pre-registered buyer and seller accounts.
+#### Buyer
+##### Username: dss061200
+##### Password: hello
+#### Seller
+##### Username: dss0620
+##### Password: hello
+
