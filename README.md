@@ -21,7 +21,7 @@ This Application is built for exchanging book and other materials at University 
 Then open Xampp control panel and run mysql server.
 ### Open Command Prompt
 Enter into studykart_py folder
-Then Activate Virtual Environment by enter command <b> venv\scripts\activate.bat <\b>
+Then Activate Virtual Environment by enter command **venv\scripts\activate.bat**
 Then run command <b> python manage.py makemigrations </b>
 Then run command <b> python manage.py migrate </b>
 Keep open command prompt and follow next steps.
