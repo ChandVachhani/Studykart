@@ -48,3 +48,10 @@ If any error comes then please contact me at 18BCE238@nirmauni.ac.in <br>
 ##### Username: dss0620
 ##### Password: hello
 
+<b>How Selenium Work<b><br>
+ We can write some test cases for our websie and check it works parfectly or not.<br>
+ In our project we use Log-In and Sin_Up test cases for test our website.<br>
+ For that we need to add path of exe driver file of any brouser and then run the code.<br>
+ It will open that brouser and fill that details which we given to in code and exicute and check. <br>
+ Fro that we use <b>ID<b> of every html element to connect with Selenium.<br>
+
