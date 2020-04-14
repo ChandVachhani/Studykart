@@ -26,6 +26,13 @@
                             </h3>
                             <hr class="hr-black">
                         </div>
+                        {% if student_form.has_error %}
+                            <div class="card text-center bg-danger py-3">
+                                <div class="text-light">
+                                    {{ student_form.errors }}
+                                </div>
+                            </div>
+                        {% endif %}
                         <div class="md-form md-outline">
                             <i class="far fa-user prefix"></i>
                             {{ student_form.student_first_name }}
