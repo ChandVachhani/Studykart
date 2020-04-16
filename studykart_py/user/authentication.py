@@ -14,10 +14,7 @@ class ModifiedBackend(BaseBackend):
             except User.DoesNotExist:
                 try:
                     user = User.objects.get(email=username)
-                    domain = '@nirmauni.ac.in'
                     if not user.check_password(raw_password=password):
-                        return None
-                    if domain not in username:
                         return None
                 except User.DoesNotExist:
                     return None
