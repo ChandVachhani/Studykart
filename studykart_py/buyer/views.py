@@ -10,6 +10,7 @@ from user.models import roles
 from django.contrib.auth import login as login_user
 from django.contrib.auth import authenticate,password_validation
 from buyer.forms import edit_profile,signin_card
+from django.db import IntegrityError
 from .authetication import seller_product_ownership_athentication
 # Create your views here.
 
@@ -118,14 +119,17 @@ def user_profile(request):
             email = edit_form.cleaned_data['email']
             mobile = edit_form.cleaned_data['mobile']
             if edit_form.has_changed():
-                user = request.user
-                user.first_name = fname
-                user.last_name = lname
-                user.username = username
-                user.email = email
-                user.user_profile.user_mobile = mobile
-                user.save()
-                user.user_profile.save()
+                try:
+                    user = request.user
+                    user.first_name = fname
+                    user.last_name = lname
+                    user.username = username
+                    user.email = email
+                    user.user_profile.user_mobile = mobile
+                    user.save()
+                    user.user_profile.save()
+                except IntegrityError:
+                    return redirect('profile')
             return redirect('profile')
         else:
             return render(request, 'buyer/profile.html',context_dict)
