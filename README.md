@@ -38,7 +38,7 @@ This should not give any errors. <br>
 Then in command prompt run command <b> python manage.py runserver </b>. <br>
 Then open link shown in command prompt. <br>
 
-If any error comes then please contact me at 18BCE238@nirmauni.ac.in <br>
+If any error comes then please contact me at 18BCE249@nirmauni.ac.in <br>
 ### Credentials
 #### There are pre-registered buyer and seller accounts.
 #### Buyer
