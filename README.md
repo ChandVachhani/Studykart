@@ -12,8 +12,8 @@ This Application is built for exchanging book and other materials at University 
  <b>Pandas</b>: It is used for filtering purpose in Django Admin Page.<br>
 
 ## Project Developers
-#### 18BCE238
 #### 18BCE249
+#### 18BCE238
 #### 18BCE231
 
 ### Project Video
